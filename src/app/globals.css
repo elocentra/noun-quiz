@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --green:        #006400;
+    --green-mid:    #004d00;
+    --green-light:  #e6f0e6;
+    --gold:         #C8A951;
+    --gold-light:   #fdf6e3;
+    --dark:         #0A1628;
+    --slate:        #1E293B;
+    --muted:        #64748B;
+    --surface:      #F8FAFC;
+    --border:       #E2E8F0;
+  }
+
+  body {
+    @apply bg-[#F8FAFC] text-[#0A1628] antialiased;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* ── BUTTONS ── */
+  .btn {
+    @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold
+           transition-all duration-150 cursor-pointer border-0 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary { @apply btn bg-[#006400] text-white hover:bg-[#004d00]; }
+  .btn-gold    { @apply btn bg-[#C8A951] text-[#0A1628] hover:bg-yellow-600 hover:text-white; }
+  .btn-outline { @apply btn bg-white text-[#0A1628] border border-[#E2E8F0] hover:bg-[#F8FAFC]; }
+  .btn-danger  { @apply btn bg-red-600 text-white hover:bg-red-700; }
+  .btn-sm      { @apply text-xs px-3 py-1.5; }
+  .btn-full    { @apply w-full justify-center; }
+
+  /* ── CARD ── */
+  .card {
+    @apply bg-white border border-[#E2E8F0] rounded-xl shadow-sm;
+  }
+
+  /* ── FORM ── */
+  .input {
+    @apply w-full border border-[#E2E8F0] rounded-lg px-3 py-2.5 text-sm outline-none
+           focus:border-[#006400] focus:ring-2 focus:ring-[#006400]/10
+           placeholder:text-[#64748B] transition-colors;
+  }
+  .label { @apply block text-sm font-medium text-[#0A1628] mb-1.5; }
+
+  /* ── BADGES ── */
+  .badge        { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold; }
+  .badge-green  { @apply badge bg-green-100 text-green-800; }
+  .badge-gold   { @apply badge bg-yellow-100 text-yellow-800; }
+  .badge-gray   { @apply badge bg-slate-100 text-slate-600; }
+  .badge-red    { @apply badge bg-red-100 text-red-800; }
+  .badge-blue   { @apply badge bg-blue-100 text-blue-800; }
+  .badge-purple { @apply badge bg-violet-100 text-violet-800; }
+
+  /* ── SPINNER ── */
+  .spinner {
+    @apply w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin;
+  }
+  .spinner-green {
+    @apply w-5 h-5 border-2 border-[#006400]/20 border-t-[#006400] rounded-full animate-spin;
+  }
+
+  /* ── QUIZ OPTION BUTTONS ── */
+  .option-btn {
+    @apply w-full text-left px-4 py-3.5 border-2 border-[#E2E8F0] rounded-xl
+           bg-white cursor-pointer text-sm font-medium text-[#0A1628]
+           transition-all duration-150 flex items-center gap-3 mb-2.5
+           hover:border-[#006400] hover:bg-[#e6f0e6];
+  }
+  .option-btn.selected { @apply border-[#006400] bg-[#e6f0e6] text-[#004d00]; }
+  .option-btn.correct  { @apply border-green-500 bg-green-50 text-green-800; }
+  .option-btn.wrong    { @apply border-red-400 bg-red-50 text-red-700 opacity-70; }
+
+  .opt-letter {
+    @apply w-6 h-6 rounded-full bg-[#E2E8F0] text-[#64748B]
+           text-xs font-bold flex items-center justify-center flex-shrink-0;
+  }
+  .option-btn.selected .opt-letter { @apply bg-[#006400] text-white; }
+  .option-btn.correct .opt-letter  { @apply bg-green-600 text-white; }
+  .option-btn.wrong .opt-letter    { @apply bg-red-500 text-white; }
+
+  /* ── NAV ITEM ── */
+  .nav-item {
+    @apply flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium
+           w-full text-left transition-colors duration-150 cursor-pointer border-0 bg-transparent
+           text-white/40 hover:text-white hover:bg-white/5;
+  }
+  .nav-item.active { @apply bg-[#006400] text-white; }
+
+  /* ── PROGRESS ── */
+  .progress-bar { @apply h-1.5 bg-[#E2E8F0] rounded-full overflow-hidden; }
+  .progress-fill { @apply h-full bg-[#006400] rounded-full transition-all duration-300; }
+
+  /* ── TABLE ── */
+  .table-th { @apply text-left px-4 py-3 text-xs font-semibold text-[#64748B] uppercase tracking-wide border-b border-[#E2E8F0]; }
+  .table-td { @apply px-4 py-3.5 border-b border-[#E2E8F0] text-sm; }
+}
